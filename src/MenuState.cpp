@@ -57,7 +57,6 @@ void MenuState::draw(){
 			attroff(COLOR_PAIR(1));
 
 			if(_selectionPressed){
-
 				_selectionPressed = false;
 				_subMenus[i].second();
 				break;
@@ -76,7 +75,7 @@ void MenuState::clean(){
 
 //Function pointers
 void MenuState::onEditor(){
-
+	StateHandler::pushState(new EditorState);
 }
 
 void MenuState::onSimulator(){

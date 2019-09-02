@@ -3,6 +3,7 @@
 
 #include "StateHandler.h"
 #include "CreditState.h"
+#include "EditorState.h"
 #include <string>
 #include <vector>
 
