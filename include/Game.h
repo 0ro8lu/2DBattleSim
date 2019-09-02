@@ -3,8 +3,7 @@
 
 #include <ncurses.h>
 
-#include "Map.h"
-#include "StateHandler.h"
+#include "Timer.h"
 #include "MenuState.h"
 #include "EditorState.h"
 
@@ -16,8 +15,9 @@ public:
 	static void draw();
 	static void clean();
 private:
-	static Map _map;
-	static char _onExit;
+
+	static double _previous, _lag, _current, _elapsed;
+	static const double MS_PER_UPDATE;
 };
 
 #endif //GAME_H

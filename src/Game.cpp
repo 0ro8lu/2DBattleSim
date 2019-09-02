@@ -1,7 +1,10 @@
 #include "Game.h"
 
-Map Game::_map;
-char Game::_onExit = 0;
+double Game::_previous = 0;
+double Game::_lag      = 0;
+double Game::_current  = 0;
+double Game::_elapsed  = 0;
+const double Game::MS_PER_UPDATE = 1;
 
 void Game::init(){	
 	//Init NCurses
@@ -10,11 +13,21 @@ void Game::init(){
 	//Game state initalization
 	StateHandler::pushState(new MenuState);
 
-	//_map.load("../../maps/map1.txt");
-
+	_previous = Timer::getCurrentTime();
 	while(!(StateHandler::onExit())){
-		update();
-		draw();
+
+		_current = Timer::getCurrentTime();
+		_elapsed = _current - _previous;
+		_previous = _current;
+		_lag += _elapsed;
+
+		mvaddstr(0, 0, std::to_string(_lag).c_str());
+
+		while(_lag >= MS_PER_UPDATE){
+			update();
+			draw();
+			_lag -= MS_PER_UPDATE;
+		}
 	}
 	clean();
 }
@@ -40,7 +53,6 @@ void Game::update(){
 
 void Game::draw(){
 	StateHandler::draw();
-	//_map.draw();
 }
 
 void Game::clean(){

@@ -1,4 +1,5 @@
 *.sh
 build/
 bin/
+.vscode/
 tmp.txt

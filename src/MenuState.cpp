@@ -16,6 +16,9 @@ void MenuState::init(){
 	_selectionPressed = false;
 }
 
+void MenuState::input(){
+}
+
 void MenuState::update(){
 	_input = getch();
 
@@ -43,11 +46,11 @@ void MenuState::update(){
 void MenuState::draw(){
 
 	// Main Menu ASCII String
-	mvaddstr(0, (COLS-53)/2, "m    m          \"           m    m");
-	mvaddstr(1, (COLS-53)/2, "##  ##  mmm   mmm    m mm   ##  ##  mmm   m mm   m   m");
-	mvaddstr(2, (COLS-53)/2, "# ## # \"   #    #    #\"  #  # ## # #\"  #  #\"  #  #   # ");
-	mvaddstr(3, (COLS-53)/2, "# \"\" # m\"\"\"#    #    #   #  # \"\" # #\"\"\"\"  #   #  #   #");
-	mvaddstr(4, (COLS-53)/2, "#    # \"mm\"#  mm#mm  #   #  #    # \"#mm\"  #   #  \"mm\"#");
+	mvaddstr(0, (COLS-55)/2, "m    m          \"           m    m");
+	mvaddstr(1, (COLS-55)/2, "##  ##  mmm   mmm    m mm   ##  ##  mmm   m mm   m   m");
+	mvaddstr(2, (COLS-55)/2, "# ## # \"   #    #    #\"  #  # ## # #\"  #  #\"  #  #   # ");
+	mvaddstr(3, (COLS-55)/2, "# \"\" # m\"\"\"#    #    #   #  # \"\" # #\"\"\"\"  #   #  #   #");
+	mvaddstr(4, (COLS-55)/2, "#    # \"mm\"#  mm#mm  #   #  #    # \"#mm\"  #   #  \"mm\"#");
 
 	//Sub Menus
 	for(unsigned int i = 0; i < _subMenus.size(); i++){

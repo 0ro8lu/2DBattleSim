@@ -13,6 +13,7 @@ public:
 	~MenuState();
 
 	void init();
+	void input();
 	void update();
 	void draw();
 	void clean();
