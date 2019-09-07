@@ -14,6 +14,10 @@ void StateHandler::popState(){
 	_gameStates.pop_back();
 }
 
+void StateHandler::input(){
+	_gameStates[_gameStates.size() - 1]->input();
+}
+
 void StateHandler::update(){
 	_gameStates[_gameStates.size() - 1]->update();
 }

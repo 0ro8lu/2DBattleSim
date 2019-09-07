@@ -8,6 +8,7 @@ class StateHandler{
 public:
 	static void pushState(GameState* gs);
 	static void popState();
+	static void input();
 	static void update();
 	static void draw();
 	static void clean();

@@ -14,12 +14,12 @@ void MenuState::init(){
 
 	_currentSelection = 0;
 	_selectionPressed = false;
+
+	_xOffset = 0;
+	_yOffset = 0;
 }
 
 void MenuState::input(){
-}
-
-void MenuState::update(){
 	_input = getch();
 
 	//input managing for menus
@@ -38,9 +38,14 @@ void MenuState::update(){
 			_currentSelection++;
 		}
 	}
-	if(_input == 10){
+	if(_input == 10){ //Enter key
 		_selectionPressed = true;	
 	}
+}
+
+void MenuState::update(){
+	//TODO:implement side-way scrolling map in background
+	clear();
 }
 
 void MenuState::draw(){
@@ -71,6 +76,7 @@ void MenuState::draw(){
 			mvaddstr((6 + i), ((COLS - _subMenus[i].first.length())/2), _subMenus[i].first.c_str());
 		}
 	}
+	//Side-Ways Scrolling Text
 }
 
 void MenuState::clean(){

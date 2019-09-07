@@ -28,5 +28,7 @@ private:
 	std::vector<std::pair<std::string, std::function<void()>>> _subMenus;
 	int   			           _currentSelection;
 	bool                       _selectionPressed;
+
+	int _xOffset, _yOffset;
 };
 #endif // MENU_STATE_H
