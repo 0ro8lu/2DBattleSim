@@ -1,6 +1,8 @@
 *.sh
 build/
 bin/
-.vscode/
+.vscode
 tmp.txt
 problems.txt
+compile.bat
+run.bat

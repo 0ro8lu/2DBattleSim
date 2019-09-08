@@ -7,23 +7,27 @@ EditorState::~EditorState() {}
 void EditorState::init(){
 	clear();
 
-	_cursorX = 1;
-	_cursorY = 1;
+	_winWidth  = COLS - 40;
+	_winHeight = LINES - 10;
+	_winStartX = 2;
+	_winStartY = 9;
 
+	//Init windows
+	_editorWin = newwin(_winHeight, _winWidth, _winStartY, _winStartX);
+	_charWin   = newwin(3, 4, _winStartY, (_winWidth + _winStartX) + 4); 
+
+	_cursorX = 2;
+	_cursorY = 2;
 	_offsetX = 0;
 	_offsetY = 0;
 
 	_currentChar  = 33;
-	_currentColor = 1;
-
-	//Init windows
-	_editorWin = newwin(44, 180, 10, 2);
-	_charWin   = newwin(3, 3, 10, 184);
-	refresh();
+	_currentColor = 4;
 
 	box(_editorWin, 0, 0);
 	box(_charWin, 0, 0);
 
+	refresh();
 	wrefresh(_editorWin);
 	wrefresh(_charWin);
 
@@ -34,7 +38,7 @@ void EditorState::init(){
 
 void EditorState::input(){
 	_input = getch();
-
+	
 	if(_input == 10){
 		_map[((_cursorX + _offsetX) - 1) + (((_cursorY + _offsetY) - 1) * getmaxx(_editorWin))].symbol  = _currentChar;
 		_map[((_cursorX + _offsetX) - 1) + (((_cursorY + _offsetY) - 1) * getmaxx(_editorWin))].color   = _currentColor;
@@ -102,7 +106,7 @@ void EditorState::input(){
 		else if(_cursorY != getmaxy(_editorWin) - 2)
 			_cursorY++;
 	}
-
+	
 	if(_input == 'q'){
 		StateHandler::popState();
 	}
@@ -137,8 +141,8 @@ void EditorState::draw(){
 		}
 	}
 
-	mvaddstr(8, 3, ("X: " + std::to_string(_cursorX + _offsetX)).c_str());
-	mvaddstr(9, 3, ("Y: " + std::to_string(_cursorY + _offsetY)).c_str());
+	mvaddstr(_winStartY - 2, _winStartX, ("X: " + std::to_string(_cursorX + _offsetX)).c_str());
+	mvaddstr(_winStartY - 1, _winStartX, ("Y: " + std::to_string(_cursorY + _offsetY)).c_str());
 
 	wmove(_editorWin, _cursorY, _cursorX);
 	refresh();

@@ -31,6 +31,9 @@ private:
 	//NCurses vars
 	WINDOW* _editorWin;
 	WINDOW* _charWin;
+	int     _winWidth, _winHeight;
+	int     _winStartX, _winStartY;
+
 	int _cursorX, _cursorY;
 	int _offsetX, _offsetY;
 

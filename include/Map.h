@@ -5,7 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
-#include <ncurses.h>
+#include "Core.h"
 
 #include "Soldier.h"
 

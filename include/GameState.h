@@ -2,7 +2,7 @@
 #define GAME_STATE_H
 
 #include <functional>
-#include <ncurses.h>
+#include "Core.h"
 
 class GameState{
 public:
