@@ -2,7 +2,6 @@
 build/
 bin/
 .vscode
-tmp.txt
-problems.txt
+ideas.txt
 compile.bat
 run.bat

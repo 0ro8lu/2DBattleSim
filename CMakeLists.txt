@@ -9,6 +9,7 @@ file(GLOB SRC_FILES ${CMAKE_SOURCE_DIR}/src/*.cpp)
 
 # Include dirs
 include_directories(${CMAKE_SOURCE_DIR}/include)
+
 if(WIN32)
     include_directories(${CMAKE_SOURCE_DIR}/include/PDCurses)
 endif()
